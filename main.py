@@ -19,11 +19,11 @@ time.sleep(5) #Время для того чтобы открыть страни
 #логинимся
 email = driver.find_element(By.NAME, "email")
 email.send_keys("sofusina")
-time.sleep(3)
+time.sleep(1)
 password = driver.find_element(By.NAME, "password")
 password.send_keys("AVactO")
 password.send_keys(Keys.ENTER)
-time.sleep(5)
+time.sleep(1)
 #Идем на нужную страницу
 #Вводим даты
 dateB = '01.03.2023' #Начало периода
