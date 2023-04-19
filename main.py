@@ -2,7 +2,6 @@
 from selenium import webdriver
 from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
-
 import time
 
 options = webdriver.ChromeOptions()
@@ -10,7 +9,6 @@ options = webdriver.ChromeOptions()
 options.add_argument('--ignore-certificate-errors')
 
 url = 'https://nstats.bitdotgames.com/stats/resources/83'
-#s = Service('/Users/p.andreev/PycharmProjects/nstats_auto/chromedriver_mac/chromedriver')
 driver = webdriver.Chrome(chrome_options=options)
 
 driver.get(url=url)
@@ -30,7 +28,7 @@ dateB = '01.03.2023' #Начало периода
 dateE = '31.03.2023' #Конец периода
 #Создаем массив ресурсов
 resource_massive = ['diamonds_paid']
-#Создаем массив перфиксов
+#Создаем массив префиксов
 prefix_massive = ['buy_gold_pack',
                   'craft/buy_evolver',
                   'craft/speed_up',
@@ -122,6 +120,7 @@ for pref in range(0, len(prefix_massive)):
     new_url = "http://nstats.bitdotgames.com/stats/resources/55?bday="+ dateB + "&eday=" + dateE + "&resource=" + resource_massive[0] + "&eprefix=" + prefix_massive[pref]
     driver.get(new_url)
     time.sleep(1)
+    #Страница может быть без данных, поэтому проверяем, есть ли нужная кнопка и если ее нет - прыгаем на следующи преффикс
     try:
         clickCSV = driver.find_element(By.XPATH, "/html/body/div[2]/div/div[2]/div/button").click()
         time.sleep(1)
